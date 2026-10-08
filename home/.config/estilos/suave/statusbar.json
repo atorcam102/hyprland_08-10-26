@@ -1,0 +1,12 @@
+{
+    "bar": { "height": 34, "reservedHeight": 66 },
+    "pill": { "radius": 12, "expandedWidth": 640, "animationDuration": 250 },
+    "border": { "width": 1 },
+    "opacity": { "collapsed": 0.8, "expanded": 0.88 },
+    "modules": {
+        "left":   ["workspaces"],
+        "center": ["clock"],
+        "right":  ["battery", "volume", "power"]
+    },
+    "workspaces": { "count": 5 }
+}

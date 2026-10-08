@@ -1,0 +1,101 @@
+#       _ _                 _   _   _   _
+#  __ _| | |__  ___ _ _ _ _| |_| |_| |_| |_
+# / _` | | '_ \/ -_) '_| '_|  _|  _|  _|  _|
+# \__,_|_|_.__/\___|_| |_|  \__|\__|\__|\__|
+#
+# Prompt de Albert. Los colores ANSI salen de la paleta de kitty (matugen),
+# así que cambian con el fondo: blue = color principal del tema.
+
+console_title_template = '{{ .Folder }}'
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '│ '
+  foreground = 'darkGray'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '<darkGray>{{ .Folder }}</> ❯ '
+  background = 'transparent'
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}blue{{end}}']
+
+# Línea 1: carpeta · git · entorno   ···   duración · error · hora
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'blue'
+    template = '<b>{{ .Path }}</b>'
+
+    [blocks.segments.properties]
+      style = 'agnoster_short'
+      max_depth = 3
+      folder_separator_icon = ' › '
+      home_icon = '~'
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'green'
+    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}yellow{{ end }}']
+    template = '  {{ .HEAD }}{{ if .Staging.Changed }} <green>+{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <yellow>~{{ .Working.String }}</>{{ end }}<cyan>{{ if gt .Behind 0 }} ⇣{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }} ⇡{{ .Ahead }}{{ end }}</>'
+
+    [blocks.segments.properties]
+      branch_icon = ' '
+      fetch_status = true
+
+  [[blocks.segments]]
+    type = 'python'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'yellow'
+    template = '{{ if .Venv }}   {{ .Venv }}{{ end }}'
+
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'yellow'
+    template = '󱎫 {{ .FormattedMs }} '
+
+    [blocks.segments.properties]
+      threshold = 3000
+      style = 'austin'
+
+  [[blocks.segments]]
+    type = 'status'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'red'
+    template = '✗ {{ .Code }} '
+
+  [[blocks.segments]]
+    type = 'time'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'darkGray'
+    template = '{{ .CurrentDate | date "15:04" }}'
+
+# Línea 2: la flecha (roja si el último comando falló)
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    background = 'transparent'
+    template = '❯'
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}blue{{end}}']

@@ -1,0 +1,5 @@
+{"dock":{"iconSize":34,"spacing":6,"marginBottom":12},
+ "pill":{"radius":14,"padding":10,"animationDuration":250},
+ "border":{"width":1},
+ "opacity":{"normal":0.85},
+ "apps":{"pinned":["google-chrome","kitty"]}}

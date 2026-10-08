@@ -1,0 +1,46 @@
+{
+    "bar": {
+        "height": 36,
+        "reservedHeight": 68,
+        "enabled": true,
+        "alwaysExpanded": true,
+        "autohide": false
+    },
+    "pill": {
+        "radius": 16,
+        "fullWidth": true,
+        "animationDuration": 320
+    },
+    "border": {
+        "width": 1
+    },
+    "opacity": {
+        "collapsed": 0.86,
+        "expanded": 0.86
+    },
+    "modules": {
+        "left": [
+            "launcher",
+            "workspaces"
+        ],
+        "center": [
+            "clock"
+        ],
+        "right": [
+            "systemtray",
+            "powerprofile",
+            "volume",
+            "battery",
+            "swaync",
+            "power"
+        ]
+    },
+    "workspaces": {
+        "count": 5
+    },
+    "clock": {
+        "format": "HH:mm",
+        "dateFormat": "dddd d 'de' MMMM",
+        "calendarCommand": ""
+    }
+}

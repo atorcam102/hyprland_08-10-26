@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Envoltura de Albert para matugen.
+# Si existe ~/.config/ml4w/settings/color-seed, los colores del tema salen de
+# esa semilla (mi ámbar) en vez de la foto del fondo, aunque ML4W pida
+# "matugen image <foto>". Borra ese archivo para volver a colores del fondo.
+SEED_FILE="$HOME/.config/ml4w/settings/color-seed"
+if [ "$1" = "image" ] && [ -s "$SEED_FILE" ]; then
+    shift 2   # quita "image <foto>"
+    args=()
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            --source-color-index) shift 2 ;;
+            *) args+=("$1"); shift ;;
+        esac
+    done
+    exec /usr/bin/matugen color hex "$(tr -d '[:space:]' < "$SEED_FILE")" "${args[@]}"
+fi
+exec /usr/bin/matugen "$@"

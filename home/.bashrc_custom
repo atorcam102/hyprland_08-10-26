@@ -1,0 +1,30 @@
+#       _ _                 _   _   _   _
+#  __ _| | |__  ___ _ _ _ _| |_| |_| |_| |_
+# / _` | | '_ \/ -_) '_| '_|  _|  _|  _|  _|
+# \__,_|_|_.__/\___|_| |_|  \__|\__|\__|\__|
+#
+# Lo mío en la terminal (ML4W no toca este archivo)
+
+# Mi Hyprland
+alias firma='${EDITOR:-nano} ~/.config/hypr/firma.lua && hyprctl reload >/dev/null && echo "Firma aplicada"'
+alias hypr='cd ~/.config/hypr && ls'
+alias recargar='hyprctl reload >/dev/null && hyprctl configerrors; echo "Hyprland recargado"'
+alias estilo='~/.config/hypr/scripts/estilo.sh'
+alias errores='hyprctl configerrors'
+
+# Apuntes (SUPER + F8 para añadir)
+alias apuntes='less +G ~/Documentos/apuntes.md'
+apunta() {
+    [ -z "$*" ] && { echo "Uso: apunta comprar café"; return 1; }
+    local A=~/Documentos/apuntes.md
+    [ -f "$A" ] || printf '# Apuntes de Albert\n\n' > "$A"
+    printf -- '- **%s** %s\n' "$(date '+%d/%m %H:%M')" "$*" >> "$A" && echo "Apuntado"
+}
+
+# Día a día
+alias proyectos='cd ~/Proyectos && ls'
+alias actualizar='yay -Syu'
+alias limpiar='yay -Yc && sudo paccache -rk2'
+alias estado='~/.config/hypr/scripts/estado.sh'
+alias puertos='ss -tulpn'
+alias tiempo='curl -s "wttr.in/?lang=es&format=3"'

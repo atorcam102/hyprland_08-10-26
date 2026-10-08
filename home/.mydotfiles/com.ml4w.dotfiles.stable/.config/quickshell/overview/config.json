@@ -1,0 +1,66 @@
+{
+  "appearance": {
+    "colorSource": "matugen",
+    "caelestia": {
+      "autoRefresh": true,
+      "refreshInterval": 2000,
+      "accentProfile": "vibrant"
+    },
+    "rounding": {
+      "unsharpen": 2,
+      "verysmall": 8,
+      "small": 10,
+      "normal": 14,
+      "large": 20,
+      "full": 9999,
+      "screenRounding": 20,
+      "windowRounding": 16
+    },
+    "font": {
+      "family": {
+        "main": "JetBrainsMono Nerd Font",
+        "title": "JetBrainsMono Nerd Font",
+        "expressive": "JetBrainsMono Nerd Font"
+      },
+      "pixelSize": {
+        "smaller": 11,
+        "small": 13,
+        "normal": 14,
+        "larger": 17,
+        "huge": 20
+      }
+    },
+    "animation": {
+      "duration": {
+        "elementMove": 450,
+        "elementMoveEnter": 380,
+        "elementMoveFast": 180
+      }
+    },
+    "sizes": {
+      "elevationMargin": 10
+    }
+  },
+  "overview": {
+    "rows": 2,
+    "columns": 5,
+    "scale": 0.16,
+    "enable": true,
+    "hideEmptyRows": true,
+    "workspaceSpacing": 8,
+    "backgroundPadding": 12,
+    "workspaceNumberBaseSize": 250
+  },
+  "position": {
+    "topMargin": 84
+  },
+  "windowPreview": {
+    "iconToWindowRatio": 0.25,
+    "iconToWindowRatioCompact": 0.45,
+    "xwaylandIndicatorToIconRatio": 0.35,
+    "inactiveMonitorOpacity": 0.4
+  },
+  "hacks": {
+    "arbitraryRaceConditionDelay": 150
+  }
+}

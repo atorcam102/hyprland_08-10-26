@@ -1,0 +1,92 @@
+@import '../../colors.css';
+
+@define-color text @on_surface;
+@define-color hover alpha(@primary, 0.15);
+@define-color crust @surface_container_highest;
+
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", "Fira Sans", sans-serif;
+  transition: 200ms;
+}
+
+.widget-mpris { all: unset; }
+
+/* La tarjeta: sólida, legible, franja de color a la izquierda */
+.floating-notifications.background .notification-row .notification-background .notification {
+  background: @surface_container;
+  border: 1px solid alpha(@outline_variant, 0.9);
+  border-left: 4px solid @primary;
+  border-radius: 14px;
+  margin: 8px 16px 8px 8px;
+  padding: 6px 4px;
+  box-shadow: 0 4px 16px alpha(black, 0.45);
+}
+
+.floating-notifications.background .notification-row .notification-background .notification.critical {
+  border-left: 4px solid @error;
+  background: mix(@surface_container, @error_container, 0.25);
+}
+
+.floating-notifications.background .notification-row .notification-background .notification .notification-content {
+  margin: 0;
+  padding: 4px 6px;
+}
+
+.summary {
+  color: @primary;
+  font-weight: bold;
+  font-size: 1.05rem;
+  padding: 4px 12px 2px 12px;
+}
+
+.notification.critical .summary { color: @error; }
+
+.body {
+  color: @on_surface_variant;
+  font-size: 0.85rem;
+  padding: 2px 12px 6px 12px;
+}
+
+.time {
+  color: @outline;
+  font-size: 0.75rem;
+  margin-right: 28px;
+}
+
+.image { margin: 4px 0 4px 8px; border-radius: 10px; }
+
+/* Botones de acción */
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
+  border-radius: 10px;
+  background-color: @surface_container_high;
+  color: @text;
+  margin: 4px;
+  padding: 4px 0;
+  border: 1px solid transparent;
+}
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+  background-color: @hover;
+  border: 1px solid @primary;
+}
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+  background-color: @primary;
+  color: @on_primary;
+}
+
+/* Botón de cerrar */
+.floating-notifications.background .notification-row .notification-background .close-button {
+  background-color: transparent;
+  color: @outline;
+  border-radius: 8px;
+  margin: 8px 22px 0 0;
+  padding: 2px;
+  min-width: 20px;
+  min-height: 20px;
+}
+.floating-notifications.background .notification-row .notification-background .close-button:hover {
+  background-color: @primary;
+  color: @on_primary;
+}
+
+.notification progress, .notification.critical progress { background-color: @primary; border-radius: 4px; }

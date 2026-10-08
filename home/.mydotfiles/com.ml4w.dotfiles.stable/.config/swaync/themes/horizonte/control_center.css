@@ -1,0 +1,226 @@
+@import '../../colors.css';
+
+@define-color panel alpha(@surface_container, 0.94);
+@define-color card @surface_container_high;
+@define-color cardHigh @surface_container_highest;
+@define-color hairline alpha(@outline_variant, 0.95);
+@define-color highlight alpha(@on_surface, 0.06);
+@define-color hover alpha(@primary, 0.16);
+
+* {
+  color: @on_surface;
+  font-size: 0.95rem;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  transition: 200ms cubic-bezier(0.05, 0.7, 0.1, 1);
+}
+
+/* === Panel === */
+.control-center {
+  background: @panel;
+  border: 1px solid @hairline;
+  border-radius: 20px;
+  margin: 0;
+  padding: 6px;
+  box-shadow: 0 12px 32px alpha(black, 0.45), inset 0 1px 0 @highlight;
+}
+
+/* === Título + limpiar === */
+.widget-title {
+  margin: 8px 12px 6px 12px;
+}
+.widget-title > label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: @on_surface;
+}
+.widget-title > button {
+  background: @card;
+  border: 1px solid @hairline;
+  border-radius: 10px;
+  padding: 4px 14px;
+  font-size: 0.85rem;
+  color: @on_surface_variant;
+}
+.widget-title > button:hover {
+  background: @hover;
+  color: @primary;
+}
+
+/* === No molestar === */
+.widget-dnd {
+  margin: 10px 12px 4px 12px;
+  padding: 10px 14px;
+  background: @card;
+  border: 1px solid @hairline;
+  border-radius: 14px;
+}
+.widget-dnd > label {
+  font-weight: 600;
+}
+.widget-dnd > switch {
+  background: @cardHigh;
+  border-radius: 999px;
+  min-width: 44px;
+  min-height: 22px;
+  box-shadow: none;
+  border: 1px solid @hairline;
+}
+.widget-dnd > switch:checked {
+  background: @primary;
+  border-color: @primary;
+}
+.widget-dnd > switch slider {
+  background: @outline;
+  border-radius: 999px;
+  min-width: 18px;
+  min-height: 18px;
+  margin: 2px;
+}
+.widget-dnd > switch:checked slider {
+  background: @on_primary;
+}
+
+/* === Cuadrícula de botones: chips === */
+.widget-buttons-grid {
+  margin: 4px 8px;
+  padding: 0;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  margin: 4px;
+  padding: 14px 0;
+  min-width: 70px;
+  background: @card;
+  border: 1px solid @hairline;
+  border-radius: 14px;
+  color: @on_surface;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button label {
+  font-size: 1.25rem;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @hover;
+  color: @primary;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background: @primary_container;
+  border-color: alpha(@primary, 0.5);
+  color: @on_primary_container;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
+  color: @on_primary_container;
+}
+
+/* === Deslizadores (volumen / brillo) === */
+.widget-volume,
+.widget-backlight {
+  margin: 6px 12px;
+  padding: 10px 14px;
+  background: @card;
+  border: 1px solid @hairline;
+  border-radius: 14px;
+}
+trough {
+  background: @cardHigh;
+  border-radius: 999px;
+  min-height: 6px;
+}
+trough highlight {
+  background: @primary;
+  border-radius: 999px;
+  border: none;
+}
+trough slider {
+  background: @primary;
+  border-radius: 999px;
+  min-width: 14px;
+  min-height: 14px;
+  margin: -5px 0;
+  box-shadow: 0 0 0 3px alpha(@primary, 0.2);
+}
+
+/* === Música === */
+.widget-mpris {
+  margin: 6px 12px;
+  border-radius: 14px;
+}
+.widget-mpris-player {
+  background: @card;
+  border: 1px solid @hairline;
+  border-radius: 14px;
+  padding: 10px;
+}
+.widget-mpris-album-art {
+  border-radius: 10px;
+}
+.widget-mpris-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.widget-mpris-subtitle {
+  font-size: 0.85rem;
+  color: @on_surface_variant;
+}
+.widget-mpris button {
+  border-radius: 10px;
+  padding: 4px;
+}
+.widget-mpris button:hover {
+  background: @hover;
+}
+
+/* === Notificaciones dentro del centro === */
+.control-center .notification-row .notification-background .notification {
+  background: @card;
+  border: 1px solid @hairline;
+  border-radius: 14px;
+  margin: 4px 6px;
+  padding: 8px 6px;
+  box-shadow: none;
+}
+.control-center .notification-row .notification-background .notification.critical {
+  border: 1px solid alpha(@error, 0.7);
+  background: mix(@surface_container_high, @error_container, 0.3);
+}
+.control-center .notification-row .notification-background .close-button {
+  background: transparent;
+  color: @outline;
+  border-radius: 10px;
+  padding: 2px;
+  margin: 8px 12px 0 0;
+}
+.control-center .notification-row .notification-background .close-button:hover {
+  background: @hover;
+  color: @primary;
+}
+.control-center .notification-content .time {
+  font-size: 0.72rem;
+  color: @outline;
+  margin-right: 34px;
+}
+
+/* === Grupos === */
+.notification-group {
+  margin: 2px 8px;
+}
+.notification-group-headers {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: @on_surface_variant;
+}
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background: @card;
+  border: 1px solid @hairline;
+  border-radius: 10px;
+  padding: 4px;
+}
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+  background: @hover;
+}
+
+/* === Sin notificaciones === */
+.control-center-list-placeholder {
+  opacity: 0.5;
+  color: @on_surface_variant;
+}

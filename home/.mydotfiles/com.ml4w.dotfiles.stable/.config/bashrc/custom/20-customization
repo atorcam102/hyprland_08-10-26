@@ -1,0 +1,4 @@
+# -----------------------------------------------------
+# Prompt de Albert (sustituye al 20-customization de ML4W)
+# -----------------------------------------------------
+eval "$(oh-my-posh init bash --config $HOME/.config/ohmyposh/albert.toml)"

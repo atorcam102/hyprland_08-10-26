@@ -1,0 +1,3 @@
+/* Tema de notificaciones de Albert: panel lateral del tema glass + tarjetas propias */
+@import "../glass/control_center.css";
+@import "notifications.css";

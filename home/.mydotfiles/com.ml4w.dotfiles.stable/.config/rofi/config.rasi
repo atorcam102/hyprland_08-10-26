@@ -1,0 +1,249 @@
+/*
+#  _             _                _
+# | |_  ___ _ _ (_)______ _ _  __| |_ ___
+# | ' \/ _ \ '_|| |_ / _ \ ' \/ _|  _/ -_)
+# |_||_\___/_|  |_/__\___/_||_\__|\__\___|
+#
+# Lanzador "Horizonte": una columna tipo spotlight.
+# Colores: los de matugen (colors.rasi). Forma: tokens del rediseño.
+# El original de ML4W está en config.rasi.antes-horizonte
+# -----------------------------------------------------
+*/
+
+/* ---- Configuration ---- */
+configuration {
+    modi:                       "drun,filebrowser,window,run";
+    font:                       "JetBrainsMono Nerd Font 10";
+    show-icons:                 true;
+    icon-theme:                 "kora";
+    display-drun:               "󰀻  Apps";
+    display-run:                "  Ejecutar";
+    display-filebrowser:        "  Archivos";
+    display-window:             "  Ventanas";
+    drun-display-format:        "{name}";
+    hover-select:               true;
+    scroll-method:              1;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    window-format:              "{c}  ·  {t}";
+    click-to-exit:              true;
+    close-on-delete:            true;
+    kb-cancel:                  "Escape";
+}
+
+/* ---- Load font ---- */
+@import "~/.config/ml4w/settings/rofi-font.rasi"
+
+/* ---- Load colors ---- */
+@theme "~/.config/rofi/colors.rasi"
+
+/* ---- Load wallpaper ---- */
+@import "~/.cache/ml4w/hyprland-dotfiles/current_wallpaper.rasi"
+
+/* ---- Load border width ---- */
+@import "~/.config/ml4w/settings/rofi-border.rasi"
+
+/* ---- Load border radius ---- */
+@import "~/.config/ml4w/settings/rofi-border-radius.rasi"
+
+// Ventana //
+window {
+    width:                       40em;
+    transparency:                "real";
+    fullscreen:                  false;
+    enabled:                     true;
+    cursor:                      "default";
+    location:                    center;
+    anchor:                      center;
+    y-offset:                    -6%;
+    spacing:                     0em;
+    padding:                     0em;
+    border:                      @border-width;
+    border-color:                @outline-variant;
+    border-radius:               @border-radius;
+    background-color:            @surface-container;
+}
+
+mainbox {
+    enabled:                     true;
+    border-radius:               0;
+    spacing:                     0em;
+    padding:                     0em;
+    orientation:                 vertical;
+    children:                    [ "hero", "message", "listview", "mode-switcher" ];
+    background-color:            transparent;
+}
+
+// Cabecera: el fondo de pantalla difuminado con el buscador encima //
+hero {
+    orientation:                 vertical;
+    expand:                      false;
+    border-radius:               20px 20px 0 0;
+    padding:                     3.2em 1.1em 1.1em 1.1em;
+    children:                    [ "inputbar" ];
+    background-color:            transparent;
+    background-image:            @current-image;
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     0.8em;
+    padding:                     0.85em 1.1em;
+    children:                    [ "textbox-prompt-colon", "entry", "num-filtered-rows" ];
+    border:                      1px;
+    border-color:                @outline-variant;
+    border-radius:               14px;
+    background-color:            @surface-container-high;
+    text-color:                  @on-surface;
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         " ";
+    padding:                     0 0.2em 0 0;
+    border-radius:               0;
+    text-color:                  @primary;
+    background-color:            transparent;
+}
+
+entry {
+    border-radius:               0;
+    enabled:                     true;
+    text-color:                  @on-surface;
+    cursor:                      text;
+    placeholder:                 "Buscar aplicaciones…";
+    placeholder-color:           @outline;
+    background-color:            transparent;
+}
+
+num-filtered-rows {
+    border-radius:               0;
+    enabled:                     true;
+    expand:                      false;
+    text-color:                  @outline;
+    background-color:            transparent;
+}
+
+// Lista //
+listview {
+    expand:                      true;
+    border-radius:               0;
+    padding:                     0.7em 0.7em 0.4em 0.7em;
+    spacing:                     0.2em;
+    enabled:                     true;
+    columns:                     1;
+    lines:                       7;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @on-surface;
+}
+
+element {
+    enabled:                     true;
+    spacing:                     0.9em;
+    padding:                     0.55em 0.8em;
+    cursor:                      pointer;
+    border-radius:               12px;
+    background-color:            transparent;
+    text-color:                  @on-surface;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  @on-surface;
+}
+
+element normal.urgent,
+element alternate.urgent,
+element selected.urgent {
+    background-color:            @error-container;
+    text-color:                  @on-error-container;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:            transparent;
+    text-color:                  @primary;
+}
+
+element selected.normal,
+element selected.active {
+    background-color:            @primary-container;
+    text-color:                  @on-primary-container;
+}
+
+element-icon {
+    border-radius:               0;
+    size:                        1.9em;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element-text {
+    border-radius:               0;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+// Pestañas de modo //
+mode-switcher {
+    enabled:                     true;
+    expand:                      false;
+    border-radius:               0;
+    orientation:                 horizontal;
+    spacing:                     0.4em;
+    padding:                     0.6em 0.7em 0.7em 0.7em;
+    border:                      1px 0 0 0;
+    border-color:                @outline-variant;
+    background-color:            transparent;
+}
+
+button {
+    padding:                     0.5em 0.8em;
+    border-radius:               10px;
+    border:                      0;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @on-surface-variant;
+}
+
+button selected {
+    background-color:            @secondary-container;
+    text-color:                  @on-secondary-container;
+}
+
+// Mensajes y errores //
+message {
+    border-radius:               0;
+    padding:                     0.6em 1.1em 0 1.1em;
+    background-color:            transparent;
+}
+
+textbox {
+    padding:                     0.6em 0.9em;
+    border-radius:               10px;
+    text-color:                  @on-surface-variant;
+    background-color:            @surface-container-high;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+error-message {
+    padding:                     1em;
+    text-color:                  @on-surface;
+    background-color:            @surface-container;
+    children:                    [ "textbox" ];
+}
