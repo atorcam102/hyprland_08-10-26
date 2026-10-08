@@ -8,7 +8,7 @@
 # Hyprland + ML4W "Horizonte", colores matugen, dock, barra, el pingüino,
 # estilos, iconos/cursor, shotbar, fuentes y atajos.
 #
-# Uso:   git clone https://github.com/<usuario>/hyprland_08-10-26 && cd hyprland_08-10-26 && ./install.sh
+# Uso:   git clone https://github.com/atorcam102/hyprland_08-10-26 && cd hyprland_08-10-26 && ./install.sh
 # Flags: --sin-paquetes   (solo copia configuración)
 #        --sin-sistema    (no toca locale/teclado/autologin)
 #        --si             (responde "sí" a todo)
