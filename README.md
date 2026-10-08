@@ -19,7 +19,7 @@ Parte de un Arch Linux base con un usuario que tenga `sudo` y conexión a intern
 
 ```bash
 sudo pacman -S --needed git
-git clone https://github.com/<tu-usuario>/hyprland_08-10-26.git
+git clone https://github.com/atorcam102/hyprland_08-10-26.git
 cd hyprland_08-10-26
 ./install.sh
 ```
